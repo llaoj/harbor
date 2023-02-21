@@ -17,4 +17,5 @@ jobs:
           cd src/github.com/llaoj/harbor
           pwd
           env
-          make install COMPILETAG=compile_golangimage
+          make compile COMPILETAG=compile_golangimage
+          make build COMPILETAG=compile_golangimage
