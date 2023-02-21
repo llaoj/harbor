@@ -1,7 +1,4 @@
 name: "Build Harbor from Source Code"
-env:
-  REGISTRYSERVER: registry.cn-beijing.aliyuncs.com/
-  REGISTRYPROJECTNAME: llaoj
 
 on:
   push:
@@ -20,6 +17,8 @@ jobs:
           cd src/github.com/llaoj/harbor
           pwd
           env
-          make compile COMPILETAG=compile_golangimage
-          make build COMPILETAG=compile_golangimage
-          make pushimage -e DEVFLAG=false REGISTRYSERVER=$REGISTRYSERVER REGISTRYUSER=${{ secrets.REGISTRY_USERNAME }} REGISTRYPASSWORD=${{ secrets.REGISTRY_PASSWORD }} REGISTRYPROJECTNAME=$REGISTRYPROJECTNAME
+          make compile -e COMPILETAG=compile_golangimage
+          make build -e COMPILETAG=compile_golangimage
+          docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }} registry.cn-beijing.aliyuncs.com
+          docker tag goharbor/harbor-jobservice:dev registry.cn-beijing.aliyuncs.com/llaoj/goharbor_harbor-jobservice:v2.6.2-230221
+          docker push registry.cn-beijing.aliyuncs.com/llaoj/goharbor_harbor-jobservice:v2.6.2-230221
