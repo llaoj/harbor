@@ -1,0 +1,20 @@
+name: "Build Harbor from Source Code"
+
+on:
+  push:
+
+jobs:
+  BUILD_JOBSERVICE:
+    runs-on:
+      - ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+         path: src/github.com/llaoj/harbor
+      - name: Build with official Golang image
+        run: |
+          set -x
+          cd src/github.com/llaoj/harbor
+          pwd
+          env
+          make install COMPILETAG=compile_golangimage
