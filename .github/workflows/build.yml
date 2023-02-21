@@ -1,4 +1,7 @@
 name: "Build Harbor from Source Code"
+env:
+  REGISTRYSERVER=registry.cn-beijing.aliyuncs.com/
+  REGISTRYPROJECTNAME=llaoj
 
 on:
   push:
@@ -19,3 +22,4 @@ jobs:
           env
           make compile COMPILETAG=compile_golangimage
           make build COMPILETAG=compile_golangimage
+          make pushimage -e DEVFLAG=false REGISTRYSERVER=$REGISTRYSERVER REGISTRYUSER=${{ secrets.REGISTRY_USERNAME }} REGISTRYPASSWORD=${{ secrets.REGISTRY_PASSWORD }} REGISTRYPROJECTNAME=$REGISTRYPROJECTNAME
