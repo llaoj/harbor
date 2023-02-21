@@ -1,7 +1,7 @@
 name: "Build Harbor from Source Code"
 env:
-  REGISTRYSERVER=registry.cn-beijing.aliyuncs.com/
-  REGISTRYPROJECTNAME=llaoj
+  REGISTRYSERVER: registry.cn-beijing.aliyuncs.com/
+  REGISTRYPROJECTNAME: llaoj
 
 on:
   push:
