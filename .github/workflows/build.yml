@@ -22,3 +22,5 @@ jobs:
           docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }} registry.cn-beijing.aliyuncs.com
           docker tag goharbor/harbor-jobservice:dev registry.cn-beijing.aliyuncs.com/llaoj/goharbor_harbor-jobservice:v2.6.2-230221
           docker push registry.cn-beijing.aliyuncs.com/llaoj/goharbor_harbor-jobservice:v2.6.2-230221
+          docker tag goharbor/harbor-core:dev registry.cn-beijing.aliyuncs.com/llaoj/goharbor_harbor-core:v2.6.2-230222
+          docker push registry.cn-beijing.aliyuncs.com/llaoj/goharbor_harbor-core:v2.6.2-230222
